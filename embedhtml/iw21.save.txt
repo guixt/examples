@@ -1,0 +1,17 @@
+// Create notification with HTML user input
+
+// Get user input from HTML page
+CallJS html_to_guixt "&V[control.pc]"
+
+// build up a test message for HTML status
+Set V[msg] "PC: &V[status_pc]"
+Set V[msg] "&V[msg]\nMonitor: &V[status_monitor]"
+Set V[msg] "&V[msg]\nKeyboard: &V[status_keyboard]"
+Set V[msg] "&V[msg]\nMouse: &V[status_mouse]"
+Set V[msg] "&V[msg]\nCamera: &V[status_camera]"
+Set V[msg] "&V[msg]\nMicrophone: &V[status_microphone]"
+
+// display the test message
+Message "&V[msg]"
+
+Return
