@@ -1,0 +1,36 @@
+if not V[IW21_mode]
+  Box (1,53) (8,73) "Special functions"
+    Pushbutton (2,54) "Car maintenance" size=(2,17) process="IW21_start.txt"
+       using MODE = "CAR2"
+    Pushbutton (4,54) "Car malfunction" size=(2,17) process="IW21_start.txt"
+       using MODE = "CAR1"
+    Pushbutton (6,54) "PC malfunction" size=(2,17) process="IW21_start.txt"
+       using MODE = "PC"
+
+  stop script
+endif
+
+// delete some standard elements
+del P[Notification]
+del G[Reference]
+del F[Notification Type] -triple
+del F[Notification] -triple
+
+// offer option to return to standard screen
+Pushbutton (toolbar) "Back to Standard PM Notification" process="IW21_start.txt"
+  using MODE = ""
+
+// PC malfunction dialog
+if V[IW21_mode=PC]
+
+  Title "Create PM notification: PC hardware malfunction"
+  Box (0,0) (29,155) "PC hardware malfunction"
+  Control (0.7,0.8) (28.9,155.4) _
+    progid="file://C:\GuiXT\Scripts\iw21.pc.html" _
+    name="control.pc"
+
+  Pushbutton (30,1) "Save" process="IW21_save.txt" size=(2,16)
+endif
+
+// no action on Enter
+On Enter fcode="?"
