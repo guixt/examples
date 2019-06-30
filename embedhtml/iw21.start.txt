@@ -1,0 +1,10 @@
+Parameter MODE
+
+// Set dialog mode for IW21
+Set V[IW21_mode] "&U[MODE]"
+
+// close previous control
+CloseControl name="control.pc"
+
+// re-open the transaction
+Enter "/Niw21"
